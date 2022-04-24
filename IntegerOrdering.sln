@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegerOrdering", "IntegerOrdering\IntegerOrdering.csproj", "{529C794F-4513-42C7-BBA7-5A98F5374EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerOrderingTests", "IntegerOrderingTests\IntegerOrderingTests.csproj", "{C9626BFB-F721-4FCC-9F74-ACBE57916480}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{529C794F-4513-42C7-BBA7-5A98F5374EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529C794F-4513-42C7-BBA7-5A98F5374EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529C794F-4513-42C7-BBA7-5A98F5374EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529C794F-4513-42C7-BBA7-5A98F5374EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9626BFB-F721-4FCC-9F74-ACBE57916480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9626BFB-F721-4FCC-9F74-ACBE57916480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9626BFB-F721-4FCC-9F74-ACBE57916480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9626BFB-F721-4FCC-9F74-ACBE57916480}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3BB7BA1-D8E8-4630-8842-4713C108D225}
+	EndGlobalSection
+EndGlobal
