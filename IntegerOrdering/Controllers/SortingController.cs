@@ -19,6 +19,10 @@ namespace IntegerOrdering.Controllers
             _fileService = fileService;
         }
 
+        /// <summary>
+        /// Responds to Controller Get call
+        /// </summary>
+        /// <returns>The text representing last run of sorter or generic text if no results exist</returns>
         [HttpGet]
         public ActionResult ReturnSortedIntegers()
         {
@@ -32,6 +36,11 @@ namespace IntegerOrdering.Controllers
             }
         }
 
+        /// <summary>
+        /// Post endpoint for space seperated string representing integers
+        /// </summary>
+        /// <param name="values">string representing integers</param>
+        /// <returns>Status code and relevant text</returns>
         [HttpPost]
         [Route("/SortString")]
         public ActionResult SortIntegersFromString([FromBody] string values)
@@ -52,6 +61,11 @@ namespace IntegerOrdering.Controllers
 
         }
 
+        /// <summary>
+        /// Post endpoint for param array int[]
+        /// </summary>
+        /// <param name="values">array of integers</param>
+        /// <returns>Status code and relevant text</returns>
         [HttpPost]
         [Route("/SortArray")]
         public ActionResult SortIntegersFromArray([FromBody] params int[] values)

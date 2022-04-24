@@ -4,7 +4,11 @@ namespace IntegerOrdering.Sorters
 {
     public class BubbleSort : IBubbleSort
     { 
-
+        /// <summary>
+        /// Sorting algorithm. BubbleSort
+        /// </summary>
+        /// <param name="data">the data to be sorted</param>
+        /// <returns></returns>
         public bool Sort(ref int[] data)
         {
             try

@@ -13,6 +13,7 @@ namespace IntegerOrdering.Services
         private Stopwatch _stopwatch = new Stopwatch();
         private double _elapsed;
         private string _performance;
+ 
 
         public SortingService(IFileService fileService, IBubbleSort bubbleSorter, IInsertionSort insertionSorter)
         {
@@ -21,30 +22,41 @@ namespace IntegerOrdering.Services
             _fileService = fileService;
         }
 
+        /// <summary>
+        /// called from sortArray endpoint
+        /// </summary>
+        /// <param name="data">the data to be sorted</param>
+        /// <returns></returns>
         public string SortIntArray(int[] data)
         {
             try
             {
                 _performance = string.Empty;
-                var copy = data;
 
-                DoSort(_insertionSorter, ref copy, out _elapsed);
+                //Make a copy of the original data for second call to SortData
+                int[] copy = new int[data.Length];
+                Array.Copy(data, copy, data.Length);
+
+                DoSort(_insertionSorter, ref data, out _elapsed);
                 _performance = $"time for insertion sort = {_elapsed} milliseconds, ";
-                DoSort(_bubbleSorter, ref data, out _elapsed);
+
+                DoSort(_bubbleSorter, ref copy, out _elapsed);
                 _fileService.WriteFile(data);
+
                 _performance += $" - time for bubble sort = {_elapsed} milliseconds";
                 return _performance;
             }
-            catch (Exception)
+            catch
             {
                 throw;
             }
-
-
-
-
         }
 
+        /// <summary>
+        /// Called from sortstring endpoint. The string is first parsed to an int array before passing to the sort method
+        /// </summary>
+        /// <param name="data">The string representing data to be sorted</param>
+        /// <returns></returns>
         public string SortStringData(string data)
         {
             try
@@ -56,10 +68,12 @@ namespace IntegerOrdering.Services
                 {
                     input[i] = int.Parse(original[i]);
                 }
-                var copy = input;
-                DoSort(_insertionSorter, ref copy, out _elapsed);
+                int[] copy = new int[original.Length];
+                Array.Copy(input, copy, input.Length); 
+
+                DoSort(_insertionSorter, ref input, out _elapsed);
                 _performance = $"time for insertion sort = {_elapsed} milliseconds, ";
-                DoSort(_bubbleSorter, ref input, out _elapsed);
+                DoSort(_bubbleSorter, ref copy, out _elapsed);
                 _performance += $" - time for bubble sort = {_elapsed} milliseconds";
 
                 _fileService.WriteFile(input);
@@ -70,18 +84,24 @@ namespace IntegerOrdering.Services
             {
                 throw;
             }
-            catch (Exception)
+            catch 
             {
                 throw;
             }
         }
 
-
+        /// <summary>
+        /// Do the data sort depending on the type of sorter passed in
+        /// </summary>
+        /// <param name="sorter">The sorting algorithm to use for the sort</param>
+        /// <param name="data">the data to be sorted</param>
+        /// <param name="elapsed">measure of elapsed time to do the sort</param>
+        /// <returns></returns>
         private bool DoSort(IIntegerSorter sorter, ref int[] data, out double elapsed)
         {
             try
             {
-                _stopwatch.Start();
+                _stopwatch.Restart();
                 sorter.Sort(ref data);
                 _stopwatch.Stop();
                 elapsed = _stopwatch.Elapsed.TotalMilliseconds;

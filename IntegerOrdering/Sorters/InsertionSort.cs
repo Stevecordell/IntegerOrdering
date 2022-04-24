@@ -2,6 +2,11 @@
 {
     public class InsertionSort : IInsertionSort
     {
+        /// <summary>
+        /// Data sorting algorithm. InsertionSort
+        /// </summary>
+        /// <param name="data">the data to be sorted</param>
+        /// <returns></returns>
         public bool Sort(ref int[] data)
         {
             try

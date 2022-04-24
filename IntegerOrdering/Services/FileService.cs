@@ -12,6 +12,11 @@ namespace IntegerOrdering.Services
             _filePath = @"Results\";
         }
 
+        /// <summary>
+        /// Writes the data passed from the sorting controller to a file
+        /// </summary>
+        /// <param name="data">The data to be written to file</param>
+        /// <returns>true if succesful</returns>
         public bool WriteFile(int[] data)
         {
             try
@@ -31,6 +36,10 @@ namespace IntegerOrdering.Services
             }
         }
 
+        /// <summary>
+        /// Searches the results folder and return the string data from file if found
+        /// </summary>
+        /// <returns>If file found returns data if not sends back generic text indication no results</returns>
         public string GetLatestResults()
         {
             string result = "No results currently available";
