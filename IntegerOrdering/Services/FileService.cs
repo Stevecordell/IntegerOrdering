@@ -51,7 +51,7 @@ namespace IntegerOrdering.Services
                 var retval = latestFile.FullName;
                 using (StreamReader reader = new StreamReader(retval))
                 {
-                    result = $"Results of latest run: {reader.ReadToEnd()}";
+                    result = reader.ReadToEnd();
                 }
             }
             catch (Exception)
